@@ -15,10 +15,18 @@ public class Library {
             Book book = books[i];
             System.out.println(book.getName() + ", " + book.getNumOfPages() + " pages");
         }
+        System.out.println("Shown rearranging 0 and 3 index");
+        Book temp = books[0];
+        books[0] = books[3];
+        books[3] = temp;
+        for (int i = 0; i < books.length; i++) {
+            Book book = books[i];
+            System.out.println(book.getName() + ", " + book.getNumOfPages() + " pages");
+        }
         System.out.println("Shown only Clean code name books");
         for (int i = 0; i < books.length; i++) {
             Book book = books[i];
-            if (book.getName().equals("Clean code")) {
+            if ("Clean code".equals(book.getName())) {
                 System.out.println(book.getName() + ", " + book.getNumOfPages() + " pages");
             }
         }
