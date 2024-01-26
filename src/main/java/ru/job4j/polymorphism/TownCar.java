@@ -28,4 +28,9 @@ public class TownCar implements Vehicle {
     public void refill() {
 
     }
+
+    @Override
+    public void chargeBattery() {
+        Vehicle.super.chargeBattery();
+    }
 }
