@@ -64,7 +64,6 @@ public class StartUI {
         } else {
             System.out.println("Ошибка замены заявки.");
         }
-        System.out.println("Заявка изменена успешно.");
     }
 
     public static void createItem(Input input, Tracker tracker) {
