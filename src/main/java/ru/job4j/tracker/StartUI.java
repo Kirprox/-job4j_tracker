@@ -6,8 +6,7 @@ public class StartUI {
         boolean run = true;
         while (run) {
             showMenu();
-            System.out.print("Выбрать: ");
-            int select = input.askInt("Enter parameter: ");
+            int select = input.askInt("Выбрать: ");
             if (select == 0) {
                 createItem(input, tracker);
             } else if (select == 1) {
@@ -28,8 +27,7 @@ public class StartUI {
 
     public static void findItemByName(Input input, Tracker tracker) {
         System.out.println("=== Вывод заявки по имени ===");
-        System.out.print("Введите имя : ");
-        String name = input.askStr("Enter name: ");
+        String name = input.askStr("Введите имя : ");
         Item[] items = tracker.findByName(name);
         if (items.length > 0) {
             for (Item item : items) {
@@ -42,16 +40,14 @@ public class StartUI {
 
     public static void findItemById(Input input, Tracker tracker) {
         System.out.println("=== Вывод заявки по id ===");
-        System.out.print("Введите id : ");
-        int id = input.askInt("Enter id: ");
+        int id = input.askInt("Введите id : ");
         Item item = tracker.findById(id);
         System.out.println(item != null ? item : "Заявка по id: " + id + " не найдена");
     }
 
     public static void deleteItem(Input input, Tracker tracker) {
         System.out.println("=== Удаление заявки ===");
-        System.out.print("Введите id: ");
-        int id = input.askInt("Enter id: ");
+        int id = input.askInt("Введите id: ");
         Item item = tracker.findById(id);
         tracker.delete(id);
         System.out.println(item != null ? "Заявка удалена успешно." : "Ошибка удаления заявки.");
@@ -59,8 +55,7 @@ public class StartUI {
 
     public static void replaceItem(Input input, Tracker tracker) {
         System.out.println("=== Edit item ===");
-        System.out.print("Enter id: ");
-        int id = input.askInt("Enter id: ");
+        int id = input.askInt("Введите id: ");
         System.out.print("Enter name: ");
         String name = input.askStr("Enter name: ");
         Item item = new Item(name);
@@ -74,13 +69,12 @@ public class StartUI {
 
     public static void createItem(Input input, Tracker tracker) {
         System.out.println("=== Создание новой заявки ===");
-        System.out.print("Введите имя: ");
-        String name = input.askStr("Enter name: ");
+        String name = input.askStr("Введите имя: ");
         Item item = new Item(name);
         tracker.add(item);
         System.out.println("Добавленная заявка: " + item);
     }
-    
+
     public static void findAllItems(Tracker tracker) {
         System.out.println("=== Вывод всех заявок ===");
         Item[] items = tracker.findAll();
