@@ -9,9 +9,30 @@ public class FindEl {
             }
         }
         if (result == -1) {
-            throw new ElementNotFoundException();
+            throw new ElementNotFoundException("Элемент не найден");
         }
         return result;
+    }
+
+    public static boolean sent(String value, String[] abuses) throws ElementAbuseException {
+
+        return true;
+    }
+
+    public static void process(String[] values, String key, String[] abuses) {
+        try {
+            if (indexOf(values, key) != -1) {
+                sent(key, abuses);
+            }
+        } catch (ElementAbuseException ea) {
+            ea.printStackTrace();
+        } catch (ElementNotFoundException en) {
+            en.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } catch (Throwable th) {
+            th.printStackTrace();
+        }
     }
 
     public static void main(String[] args) {
