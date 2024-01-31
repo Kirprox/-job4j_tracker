@@ -5,11 +5,8 @@ public class FindMaxLength {
         String[] shops = {"Ebay", null, "Amazon", null, "Ozon"};
         int max = 0;
         for (int index = 0; index < shops.length; index++) {
-            String element = "";
-            if (shops[index] != null) {
-                element = shops[index];
-            }
-            if (element.length() > max) {
+            String element = shops[index];
+            if (shops[index] != null && element.length() > max) {
                 max = element.length();
             }
         }
