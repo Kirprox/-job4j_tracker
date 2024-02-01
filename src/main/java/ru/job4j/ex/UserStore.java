@@ -15,7 +15,7 @@ public class UserStore {
     }
 
     public static boolean validate(User user) throws UserInvalidException {
-        boolean result = user.isValid();
+        boolean result = user.isValid2();
         if (!result || user.getUsername().length() < 3) {
             throw new UserInvalidException();
         }
@@ -29,7 +29,7 @@ public class UserStore {
         try {
             User user = findUser(users, "Petr Arsentev");
             if (validate(user)) {
-                System.out.println("This user has an access");
+                System.out.println("This user has an access2");
             }
         } catch (UserInvalidException e) {
             System.out.println("Пользователь не валидный");
