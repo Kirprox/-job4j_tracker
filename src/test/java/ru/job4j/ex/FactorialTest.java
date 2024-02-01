@@ -17,4 +17,14 @@ class FactorialTest {
                 });
         assertThat(exception.getMessage()).isEqualTo("Number could not be less than 0");
     }
+
+    @Test
+    void whenFactorial9Then362880() {
+        Factorial factorial = new Factorial();
+        int input = 9;
+        int expected = 362880;
+        int result = factorial.calc(input);
+        assertThat(result).isEqualTo(expected);
+    }
+
 }
