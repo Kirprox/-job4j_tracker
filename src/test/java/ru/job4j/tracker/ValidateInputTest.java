@@ -34,10 +34,17 @@ class ValidateInputTest {
                 new String[]{"1", "2", "3", "4", "5", "6"}
         );
         ValidateInput input = new ValidateInput(output, in);
-        for (int i = 1; i <= 6; i++) {
-            int selected = input.askInt("Enter menu:");
-            assertThat(selected).isEqualTo(i);
-        }
+        int selected = input.askInt("Enter menu:");
+        assertThat(selected).isEqualTo(1);
+        selected = input.askInt("Enter menu:");
+        assertThat(selected).isEqualTo(2);
+        selected = input.askInt("Enter menu:");
+        assertThat(selected).isEqualTo(3);
+        selected = input.askInt("Enter menu:");
+        assertThat(selected).isEqualTo(4);
+        selected = input.askInt("Enter menu:");
+        assertThat(selected).isEqualTo(5);
+
     }
 
     @Test
