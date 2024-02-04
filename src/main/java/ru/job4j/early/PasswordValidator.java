@@ -34,27 +34,6 @@ public class PasswordValidator {
                     "Password should be length [8, 32]"
             );
         }
-        if (password.toLowerCase().contains("qwerty")) {
-            throw new IllegalArgumentException("Password shouldn't contain substrings: "
-                    + "qwerty, 12345, password, admin, user");
-        }
-        if (password.contains("12345")) {
-            throw new IllegalArgumentException("Password shouldn't contain substrings: "
-                    + "qwerty, 12345, password, admin, user");
-        }
-        if (password.toLowerCase().contains("password")) {
-            throw new IllegalArgumentException("Password shouldn't contain substrings: "
-                    + "qwerty, 12345, password, admin, user");
-        }
-        if (password.toLowerCase().contains("admin")) {
-            throw new IllegalArgumentException("Password shouldn't contain substrings: "
-                    + "qwerty, 12345, password, admin, user");
-        }
-        if (password.toLowerCase().contains("user")) {
-            throw new IllegalArgumentException("Password shouldn't contain substrings: "
-                    + "qwerty, 12345, password, admin, user");
-        }
-
         boolean hasUpCase = false;
         boolean hasLowCase = false;
         boolean hasDigit = false;
@@ -71,6 +50,9 @@ public class PasswordValidator {
             }
             if (!Character.isLetterOrDigit(symbol)) {
                 hasSpecial = true;
+            }
+            if (hasDigit && hasLowCase && hasUpCase && hasSpecial) {
+                break;
             }
         }
         if (!hasUpCase) {
@@ -92,6 +74,12 @@ public class PasswordValidator {
             throw new IllegalArgumentException(
                     "Password should contain at least one special symbol"
             );
+        }
+        for (String str : FORBIDDEN) {
+            if (password.toLowerCase().contains(str)) {
+                throw new IllegalArgumentException("Password shouldn't contain substrings: "
+                        + "qwerty, 12345, password, admin, user");
+            }
         }
         return password;
     }
