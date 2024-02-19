@@ -16,12 +16,9 @@ public class PriorityQueue {
         int index = 0;
         for (Task element : tasks) {
             if (task.getPriority() < element.getPriority()) {
-                index = tasks.size() - 1;
-                break;
-            } else {
-                index = tasks.size();
                 break;
             }
+            index++;
         }
         this.tasks.add(index, task);
     }
