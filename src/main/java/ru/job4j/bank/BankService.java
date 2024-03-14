@@ -22,8 +22,9 @@ public class BankService {
             List<Account> tmp = new ArrayList<>(users.get(user));
             if (!tmp.contains(account)) {
                 tmp.add(account);
+                users.put(user, tmp);
             }
-            users.put(user, tmp);
+
         }
     }
 
@@ -38,8 +39,9 @@ public class BankService {
 
     public Account findByRequisite(String passport, String requisite) {
         Account result = null;
-        if (findByPassport(passport) != null) {
-            List<Account> accounts = new ArrayList<>(users.get(findByPassport(passport)));
+        User user = findByPassport(passport);
+        if (user != null) {
+            List<Account> accounts = new ArrayList<>(users.get(user));
             for (Account account : accounts) {
                 if (account.getRequisite().equals(requisite)) {
                     result = account;
