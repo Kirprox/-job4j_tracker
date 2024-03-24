@@ -34,12 +34,10 @@ public class AnalyzeByMap {
     public static List<Label> averageScoreBySubject(List<Pupil> pupils) {
         List<Label> rsl = new ArrayList<>();
         Map<String, Integer> map = new LinkedHashMap<>();
-        int score;
         for (Pupil pupil : pupils) {
             for (Subject subject : pupil.subjects()) {
-                String subjectName = subject.name();
-                score = map.getOrDefault(subjectName, 0);
-                map.put(subjectName, score + subject.score());
+                map.put(subject.name(), map.getOrDefault(subject.name(),
+                        0) + subject.score());
             }
         }
         for (String subject : map.keySet()) {
@@ -49,18 +47,14 @@ public class AnalyzeByMap {
     }
 
     public static Label bestStudent(List<Pupil> pupils) {
+        int score = 0;
         List<Label> labelList = new ArrayList<>();
-        Map<String, Integer> map = new LinkedHashMap<>();
-        int score;
         for (Pupil pupil : pupils) {
             for (Subject subject : pupil.subjects()) {
-                String pupilName = pupil.name();
-                score = map.getOrDefault(pupilName, 0);
-                map.put(pupilName, score + subject.score());
+                score += subject.score();
             }
-        }
-        for (String subject : map.keySet()) {
-            labelList.add(new Label(subject, (double) map.get(subject)));
+            labelList.add(new Label(pupil.name(), score));
+            score = 0;
         }
         Collections.sort(labelList);
         return labelList.get(labelList.size() - 1);
@@ -69,12 +63,10 @@ public class AnalyzeByMap {
     public static Label bestSubject(List<Pupil> pupils) {
         List<Label> labelList = new ArrayList<>();
         Map<String, Integer> map = new LinkedHashMap<>();
-        int score;
         for (Pupil pupil : pupils) {
             for (Subject subject : pupil.subjects()) {
-                String subjectName = subject.name();
-                score = map.getOrDefault(subjectName, 0);
-                map.put(subjectName, score + subject.score());
+                map.put(subject.name(), map.getOrDefault(subject.name(),
+                        0) + subject.score());
             }
         }
         for (String subject : map.keySet()) {
