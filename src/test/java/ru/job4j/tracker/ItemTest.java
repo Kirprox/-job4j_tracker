@@ -11,30 +11,36 @@ class ItemTest {
 
     @Test
     void whenNaturalCompareByName() {
-        Item ivan = new Item(1, "Ivan");
-        Item maria = new Item(2, "Maria");
-        Item andrey = new Item(3, "Andrey");
-        Item vasilii = new Item(4, "Vasilii");
-        Item anastasia = new Item(5, "Anastasia");
         List<Item> items = Arrays.asList(
-                ivan, maria, andrey, vasilii, anastasia);
+                new Item(1, "Ivan"),
+                new Item(2, "Maria"),
+                new Item(3, "Andrey"),
+                new Item(4, "Vasilii"),
+                new Item(5, "Anastasia"));
         List<Item> expected = Arrays.asList(
-                anastasia, andrey, ivan, maria, vasilii);
+                new Item(5, "Anastasia"),
+                new Item(3, "Andrey"),
+                new Item(1, "Ivan"),
+                new Item(2, "Maria"),
+                new Item(4, "Vasilii"));
         items.sort(new ItemAscByName());
         assertThat(items).isEqualTo(expected);
     }
 
     @Test
     void whenDescCompareByName() {
-        Item ivan = new Item(1, "Ivan");
-        Item maria = new Item(2, "Maria");
-        Item andrey = new Item(3, "Andrey");
-        Item vasilii = new Item(4, "Vasilii");
-        Item anastasia = new Item(5, "Anastasia");
         List<Item> items = Arrays.asList(
-                ivan, maria, andrey, vasilii, anastasia);
+                new Item(1, "Ivan"),
+                new Item(2, "Maria"),
+                new Item(3, "Andrey"),
+                new Item(4, "Vasilii"),
+                new Item(5, "Anastasia"));
         List<Item> expected = Arrays.asList(
-                vasilii, maria, ivan, andrey, anastasia);
+                new Item(4, "Vasilii"),
+                new Item(2, "Maria"),
+                new Item(1, "Ivan"),
+                new Item(3, "Andrey"),
+                new Item(5, "Anastasia"));
         items.sort(new ItemDescByName());
         assertThat(items).isEqualTo(expected);
     }
