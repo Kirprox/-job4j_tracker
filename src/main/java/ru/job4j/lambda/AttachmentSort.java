@@ -21,7 +21,9 @@ public class AttachmentSort {
                 return o1.getName().compareTo(o2.getName());
             }
         };
-        Comparator<String> comparatorText = (left, right) -> left.compareTo(right);
-        Comparator<String> comparatorDescSize = (left, right) -> right.compareTo(left);
+        Comparator<String> comparatorText = (left, right) ->
+                Integer.compare(left.length(), right.length());
+        Comparator<String> comparatorDescSize = (left, right) ->
+                Integer.compare(right.length(), left.length());
     }
 }
