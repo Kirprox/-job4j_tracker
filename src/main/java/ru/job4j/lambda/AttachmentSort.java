@@ -11,12 +11,8 @@ public class AttachmentSort {
                 new Attachment("image 2", 34),
                 new Attachment("image 3", 13)
         );
-        Comparator<Attachment> comparator = new Comparator<>() {
-            @Override
-            public int compare(Attachment o1, Attachment o2) {
-                return Integer.compare(o1.getSize(), o2.getSize());
-            }
-        };
+        Comparator<Attachment> comparator = (left, right) ->
+                Integer.compare(left.getSize(), right.getSize());
         attachments.sort(comparator);
         System.out.println(attachments);
         Comparator<Attachment> nameComparator = new Comparator<Attachment>() {
@@ -25,5 +21,7 @@ public class AttachmentSort {
                 return o1.getName().compareTo(o2.getName());
             }
         };
+        Comparator<String> comparatorText = (left, right) -> left.compareTo(right);
+        Comparator<String> comparatorDescSize = (left, right) -> right.compareTo(left);
     }
 }
