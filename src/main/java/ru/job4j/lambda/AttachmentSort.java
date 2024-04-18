@@ -22,7 +22,7 @@ public class AttachmentSort {
             }
         };
         Comparator<String> comparatorText = (left, right) ->
-                Integer.compare(left.length(), right.length());
+                left.compareTo(right);
         Comparator<String> comparatorDescSize = (left, right) ->
                 Integer.compare(right.length(), left.length());
     }
