@@ -43,9 +43,11 @@ public class StartUI {
         Store tracker = new SqlTracker();
         List<UserAction> actions = Arrays.asList(
                 new Create(output),
+                new CreateManyItems(output),
                 new FindAll(output),
                 new Replace(output),
                 new Delete(output),
+                new DeleteAllItems(output),
                 new FindById(output),
                 new FindByName(output),
                 new Exit(output)
