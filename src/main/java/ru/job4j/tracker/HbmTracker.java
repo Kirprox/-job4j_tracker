@@ -1,5 +1,6 @@
 package ru.job4j.tracker;
 
+import lombok.extern.slf4j.Slf4j;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
@@ -9,6 +10,7 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import java.util.ArrayList;
 import java.util.List;
 
+@Slf4j
 public class HbmTracker implements Store, AutoCloseable {
     private final StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
             .configure().build();
@@ -24,6 +26,7 @@ public class HbmTracker implements Store, AutoCloseable {
             session.getTransaction().commit();
         } catch (Exception e) {
             session.getTransaction().rollback();
+            log.error("Ошибка при добавлении заявки: {}", item, e);
         } finally {
             session.close();
         }
@@ -47,6 +50,7 @@ public class HbmTracker implements Store, AutoCloseable {
             result = updated > 0;
         } catch (Exception e) {
             session.getTransaction().rollback();
+            log.error("Ошибка при изменении заявки: {}", item, e);
         } finally {
             session.close();
         }
@@ -65,6 +69,7 @@ public class HbmTracker implements Store, AutoCloseable {
             session.getTransaction().commit();
         } catch (Exception e) {
             session.getTransaction().rollback();
+            log.error("ошибка при удалении заявки с id: {}", id, e);
         } finally {
             session.close();
         }
@@ -81,6 +86,7 @@ public class HbmTracker implements Store, AutoCloseable {
             session.getTransaction().commit();
         } catch (Exception e) {
             session.getTransaction().rollback();
+            log.error("Ошибка при получении списка заявок: ", e);
         } finally {
             session.close();
         }
@@ -98,6 +104,7 @@ public class HbmTracker implements Store, AutoCloseable {
             session.getTransaction().commit();
         } catch (Exception e) {
             session.getTransaction().rollback();
+            log.error("Ошибка при получении заявки по имени: {}", key, e);
         } finally {
             session.close();
         }
@@ -116,6 +123,7 @@ public class HbmTracker implements Store, AutoCloseable {
             session.getTransaction().commit();
         } catch (Exception e) {
             session.getTransaction().rollback();
+            log.error("Ошибка при получении заявки по id: {}", id, e);
         } finally {
             session.close();
         }
